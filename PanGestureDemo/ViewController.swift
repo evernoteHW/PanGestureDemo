@@ -109,8 +109,8 @@ extension ViewController{
             //最大值和最小值之间
             layoutConstraint_left.constant = min(CGRectGetWidth(self.view.bounds) - CGRectGetWidth(demoView.bounds), max(layoutConstraint_left.constant, 0))
             layoutConstraint_top.constant = min(CGRectGetHeight(self.view.bounds) - CGRectGetHeight(demoView.bounds), max(layoutConstraint_top.constant, 0))
-            layoutConstraint_width.constant = min(self.view.bounds.width, max(layoutConstraint_width.constant, 2 * 50 + 10))
-            layoutConstraint_height.constant = min(self.view.bounds.height, max(layoutConstraint_height.constant, 2 * 50 + 10))
+            layoutConstraint_width.constant = min(self.view.bounds.width, max(layoutConstraint_width.constant, 3 * 40 ))
+            layoutConstraint_height.constant = min(self.view.bounds.height, max(layoutConstraint_height.constant, 3 * 40 ))
         
     }
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
