@@ -14,6 +14,7 @@
 		743BDCCA1D2DEBC10008BAF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743BDCC81D2DEBC10008BAF6 /* LaunchScreen.storyboard */; };
 		743BDCD51D2DEBC10008BAF6 /* PanGestureDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BDCD41D2DEBC10008BAF6 /* PanGestureDemoTests.swift */; };
 		743BDCE01D2DEBC10008BAF6 /* PanGestureDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BDCDF1D2DEBC10008BAF6 /* PanGestureDemoUITests.swift */; };
+		743BDCEE1D2DEE250008BAF6 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743BDCED1D2DEE250008BAF6 /* DemoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		743BDCDB1D2DEBC10008BAF6 /* PanGestureDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PanGestureDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		743BDCDF1D2DEBC10008BAF6 /* PanGestureDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureDemoUITests.swift; sourceTree = "<group>"; };
 		743BDCE11D2DEBC10008BAF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743BDCED1D2DEE250008BAF6 /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				743BDCC61D2DEBC10008BAF6 /* Assets.xcassets */,
 				743BDCC81D2DEBC10008BAF6 /* LaunchScreen.storyboard */,
 				743BDCCB1D2DEBC10008BAF6 /* Info.plist */,
+				743BDCED1D2DEE250008BAF6 /* DemoView.swift */,
 			);
 			path = PanGestureDemo;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				743BDCC21D2DEBC10008BAF6 /* ViewController.swift in Sources */,
+				743BDCEE1D2DEE250008BAF6 /* DemoView.swift in Sources */,
 				743BDCC01D2DEBC10008BAF6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
