@@ -81,36 +81,36 @@ extension ViewController{
         let movedHeight = point.y - startedPoint.y
         //设置最大和最小值
         //最小值 2 个按钮 宽度 + 中间间隔
-
+        //最大值和最小值之间
             switch btnType {
             case .None:
                 break
             case .LeftUp:
-                layoutConstraint_left.constant = CGRectGetMinX(demoViewStartedFrame) + movedWidth
+                //0~(self.view.width-3*40)
+                
+                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - 3*40, max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
                 layoutConstraint_width.constant = CGRectGetMaxX(demoViewStartedFrame) - layoutConstraint_left.constant
-                layoutConstraint_top.constant = CGRectGetMinY(demoViewStartedFrame) + movedHeight
+                
+                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - 3*40,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
                 layoutConstraint_height.constant = CGRectGetMaxY(demoViewStartedFrame) - layoutConstraint_top.constant
             case .RightUp:
-                layoutConstraint_width.constant = CGRectGetWidth(demoViewStartedFrame) + movedWidth
-                layoutConstraint_top.constant = CGRectGetMinY(demoViewStartedFrame) + movedHeight
+                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,3*40),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
+                
+                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - 3*40,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
                 layoutConstraint_height.constant = CGRectGetMaxY(demoViewStartedFrame) - layoutConstraint_top.constant
             case .LeftDown:
-                layoutConstraint_left.constant = CGRectGetMinX(demoViewStartedFrame) + movedWidth
+                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - 3*40,max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
                 layoutConstraint_width.constant = CGRectGetMaxX(demoViewStartedFrame) - layoutConstraint_left.constant
-                layoutConstraint_height.constant = CGRectGetHeight(demoViewStartedFrame) + movedHeight
+                
+                layoutConstraint_height.constant = min(CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant,max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40))
             case .RighDown:
-                layoutConstraint_width.constant = CGRectGetWidth(demoViewStartedFrame) + movedWidth
-                layoutConstraint_height.constant = CGRectGetHeight(demoViewStartedFrame) + movedHeight
+                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,3*40),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
+                layoutConstraint_height.constant = min(max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40),CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant)
             case .Center:
-                layoutConstraint_left.constant = demoViewStartedFrame.origin.x + movedWidth
-                layoutConstraint_top.constant = demoViewStartedFrame.origin.y + movedHeight
+                layoutConstraint_left.constant = min(max(demoViewStartedFrame.origin.x + movedWidth,0),CGRectGetWidth(self.view.frame) - CGRectGetWidth(demoViewStartedFrame))
+                layoutConstraint_top.constant = min(max(demoViewStartedFrame.origin.y + movedHeight,0),CGRectGetHeight(self.view.frame) - CGRectGetHeight(demoViewStartedFrame))
             }
         
-            //最大值和最小值之间
-            layoutConstraint_left.constant = min(CGRectGetWidth(self.view.bounds) - CGRectGetWidth(demoView.bounds), max(layoutConstraint_left.constant, 0))
-            layoutConstraint_top.constant = min(CGRectGetHeight(self.view.bounds) - CGRectGetHeight(demoView.bounds), max(layoutConstraint_top.constant, 0))
-            layoutConstraint_width.constant = min(self.view.bounds.width, max(layoutConstraint_width.constant, 3 * 40 ))
-            layoutConstraint_height.constant = min(self.view.bounds.height, max(layoutConstraint_height.constant, 3 * 40 ))
         
     }
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
