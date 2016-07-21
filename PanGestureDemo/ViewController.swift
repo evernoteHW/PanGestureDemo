@@ -30,11 +30,13 @@ class ViewController: UIViewController {
     private var layoutConstraint_top: NSLayoutConstraint!
     private var layoutConstraint_height: NSLayoutConstraint!
     
-    
     private var startedPoint: CGPoint = CGPointZero
     private var btnType: BtnType = .None
     private var demoViewStartedFrame: CGRect = CGRectZero
     private var isMoveBegin: Bool = false
+    
+    private let maxWidth: CGFloat = 3*40
+    private let maxHeight: CGFloat = 3*40
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,25 +89,25 @@ extension ViewController{
                 break
             case .LeftUp:
                 //0~(self.view.width-3*40)
-                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - 3*40, max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
+                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - maxWidth, max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
                 layoutConstraint_width.constant = CGRectGetMaxX(demoViewStartedFrame) - layoutConstraint_left.constant
                 
-                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - 3*40,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
+                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - maxHeight,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
                 layoutConstraint_height.constant = CGRectGetMaxY(demoViewStartedFrame) - layoutConstraint_top.constant
             case .RightUp:
-                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,3*40),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
+                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,maxWidth),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
                 
-                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - 3*40,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
+                layoutConstraint_top.constant = min(CGRectGetMaxY(demoViewStartedFrame) - maxHeight,max(CGRectGetMinY(demoViewStartedFrame) + movedHeight,0))
                 layoutConstraint_height.constant = CGRectGetMaxY(demoViewStartedFrame) - layoutConstraint_top.constant
             case .LeftDown:
-                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - 3*40,max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
+                layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - maxWidth,max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
                 layoutConstraint_width.constant = CGRectGetMaxX(demoViewStartedFrame) - layoutConstraint_left.constant
                 
-                layoutConstraint_height.constant = min(CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant,max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40))
+                layoutConstraint_height.constant = min(CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant,max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,maxHeight))
             case .RighDown:
                 
-                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,3*40),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
-                layoutConstraint_height.constant = min(max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40),CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant)
+                layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,maxWidth),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
+                layoutConstraint_height.constant = min(max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,maxHeight),CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant)
             case .Center:
                 
                 layoutConstraint_left.constant = min(max(demoViewStartedFrame.origin.x + movedWidth,0),CGRectGetWidth(self.view.frame) - CGRectGetWidth(demoViewStartedFrame))
