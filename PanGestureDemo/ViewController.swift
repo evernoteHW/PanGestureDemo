@@ -87,7 +87,6 @@ extension ViewController{
                 break
             case .LeftUp:
                 //0~(self.view.width-3*40)
-                
                 layoutConstraint_left.constant = min(CGRectGetMaxX(demoViewStartedFrame) - 3*40, max(CGRectGetMinX(demoViewStartedFrame) + movedWidth,0))
                 layoutConstraint_width.constant = CGRectGetMaxX(demoViewStartedFrame) - layoutConstraint_left.constant
                 
@@ -104,9 +103,11 @@ extension ViewController{
                 
                 layoutConstraint_height.constant = min(CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant,max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40))
             case .RighDown:
+                
                 layoutConstraint_width.constant = min(max(CGRectGetWidth(demoViewStartedFrame) + movedWidth,3*40),CGRectGetWidth(self.view.frame) - layoutConstraint_left.constant)
                 layoutConstraint_height.constant = min(max(CGRectGetHeight(demoViewStartedFrame) + movedHeight,3*40),CGRectGetHeight(self.view.frame) - layoutConstraint_top.constant)
             case .Center:
+                
                 layoutConstraint_left.constant = min(max(demoViewStartedFrame.origin.x + movedWidth,0),CGRectGetWidth(self.view.frame) - CGRectGetWidth(demoViewStartedFrame))
                 layoutConstraint_top.constant = min(max(demoViewStartedFrame.origin.y + movedHeight,0),CGRectGetHeight(self.view.frame) - CGRectGetHeight(demoViewStartedFrame))
             }
